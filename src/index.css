@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --c-green: #22a06b;
+  --c-green-dark: #1e9a64;
+  --c-green-soft: #eaf7f0;
+  --c-bg: #ffffff;
+  --c-bg-soft: #f7f8fa;
+  --c-text: #111827;
+  --c-text-2: #6b7280;
+  --c-text-3: #9ca3af;
+  --c-line: #eef0f2;
+  --c-danger: #e5484d;
+  --radius-card: 20px;
+  --radius-btn: 14px;
+  --radius-field: 12px;
+  --shadow-card: 0 4px 16px rgba(17, 24, 39, 0.06);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'HarmonyOS Sans',
+    'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 数字使用等宽字形，避免跳动 */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* 隐藏滚动条但保留滚动能力（横向日期条等） */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+input[type='text'],
+input[type='number'],
+textarea,
+select {
+  font-size: 16px; /* 防止 iOS 聚焦时自动放大 */
+}

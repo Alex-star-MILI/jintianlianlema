@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+coverage
+dev-dist
+.env
+.env.*
+*.log
+Thumbs.db
