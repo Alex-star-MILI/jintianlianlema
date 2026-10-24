@@ -9,3 +9,4 @@ dev-dist
 .env.*
 *.log
 Thumbs.db
+.vercel

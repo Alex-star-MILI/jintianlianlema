@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc --noEmit && vite build",
+    "postbuild": "node scripts/postbuild.mjs",
     "preview": "vite preview --host",
     "test": "vitest run",
     "test:watch": "vitest",

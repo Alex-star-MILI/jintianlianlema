@@ -2,23 +2,41 @@ import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
+declare const process: { env: Record<string, string | undefined> }
+
+const base = process.env.VITE_BASE ?? '/'
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['icons/apple-touch-icon.png'],
       manifest: {
+        id: '.',
         name: '今天练了吗',
         short_name: '今天练了吗',
         description: '只属于你自己的训练记录与进步追踪',
         lang: 'zh-CN',
-        start_url: '/',
-        scope: '/',
+        dir: 'ltr',
+        start_url: '.',
+        scope: '.',
         display: 'standalone',
+        display_override: ['standalone', 'minimal-ui'],
         orientation: 'portrait',
         background_color: '#FFFFFF',
         theme_color: '#22A06B',
+        categories: ['health', 'fitness', 'lifestyle'],
+        prefer_related_applications: false,
+        shortcuts: [
+          {
+            name: '查看训练记录',
+            short_name: '记录',
+            url: 'records',
+            icons: [{ src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' }],
+          },
+        ],
         icons: [
           {
             src: 'icons/icon-192.png',
@@ -42,7 +60,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
-        navigateFallback: '/index.html',
+        navigateFallback: `${base}index.html`,
         cleanupOutdatedCaches: true,
       },
     }),
